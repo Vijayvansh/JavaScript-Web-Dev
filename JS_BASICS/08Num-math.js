@@ -24,4 +24,32 @@ Indian Standrad => toLocaleString('en-IN')
 
 
 // ===================++++++++++   Math - Library   +++++++++++**************===================
+// console.log(Math);
 
+const randomNumber = Math.floor(Math.random() * 10) + 1;        //   Math.random() -> generate random numbers between 0 to 1.
+// console.log(randomNumber);
+
+// for generate between a range ->
+const max = 100;    // for maximum range of random number
+const min = 70;     // for minimum range of random number
+
+const newRandomNumber = Math.floor(Math.random() * (max - min)) + min;      // This will give output a random number between 'min' to 'max'
+// console.log(newRandomNumber);
+
+/*
+In this code Math.random() -> generate random number between 0 to 1.
+Muntipling by (max - min) -> increase the range form (0 to 1), to [0 to (max - min)].
+Math.floor -> minimum roundoff the number.
+(+ min)-> increase the range from [0 to (max - min)], to 'min' to 'max'.
+*/
+
+
+// let's create 3 Dice roll program ->
+
+const dice1 = Math.floor(Math.random() * 6) + 1;
+const dice2 = Math.floor(Math.random() * 6) + 1;
+const dice3 = Math.floor(Math.random() * 6) + 1;
+
+console.log(dice1);
+console.log(dice2);
+console.log(dice3);
