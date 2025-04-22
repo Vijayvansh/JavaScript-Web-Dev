@@ -1,6 +1,6 @@
 // Date ->
 
-const todayDate = new Date();
+let todayDate = new Date();
 
 // console.log(typeof todayDate);              // output -> object
 
@@ -27,4 +27,34 @@ const todayDate = new Date();
 // console.log(todayDate.toUTCString());               // output -> Tue, 22 Apr 2025 18:24:22 GMT   // give universal standard time 
 // console.log(todayDate.getHours());
 // console.log(todayDate.getUTCDate());
+// console.log(todayDate.toLocaleDateString());        // output -> 23/4/2025
+// console.log(todayDate.toLocaleString());            // output -> 23/4/2025, 12:01:45 am
 
+// *******************************************************************************************
+// *******************************************************************************************
+
+// Create my own date ->
+let myCreatedDate = new Date(2222, 11, 22);       // Date('year', 'month {0 to 11}', 'date')
+// console.log(myCreatedDate.toLocaleString());        // output -> 22/12/2222, 12:00:00 am
+
+// Time Stamps =>
+let myTimeStamp = Date.now();
+// console.log(myTimeStamp);               // output -> 1745347777422      // time in miliseconds for 1 jan 1970
+// console.log(myCreatedDate.getTime());
+
+// console.log(Math.floor(Date.now() / 1000));      // time in seconds insted of miliseconds
+
+let newDate = myCreatedDate.toLocaleString("hi-IN", {
+    dateStyle: "full"
+    });
+
+console.log(newDate);
+
+
+
+
+// *************************************************************************************************************************
+
+// String Interpolation =>
+
+// console.log(`My created date is ${myCreatedDate.toDateString()} and Original Date is ${todayDate.toDateString()}`);
