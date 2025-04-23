@@ -28,4 +28,3 @@ let num2 = 15;
 let num3 = 17;
 
 console.log(Array.of(num1, num2, num3));        // output -> [ 12, 15, 17 ]
-
