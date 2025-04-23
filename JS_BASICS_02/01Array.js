@@ -56,3 +56,5 @@ splice('start-index', 'end-index') -> extract an sub array from main array betwe
 'end-index' -> inclusive value, include vlaue in sub array.
 ** splice operation change the original Array. It remove all the elements of array which are included in splice sub array **.
 */
+
+// Basic Concept of Array in JS
