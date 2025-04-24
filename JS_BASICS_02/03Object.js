@@ -1,6 +1,6 @@
 // Objects in JS
 
-// Objects Litreals
+// Objects Literals
 
 const mySymbol = Symbol("key1");
 
@@ -37,7 +37,7 @@ user.greeting = function(){
 };
 
 user.greetingTwo = function(){
-    console.log(`Hello JS user, ${this.name}`);
+    console.log(`Hello JS user, ${this.name}`);     // this -> refers to the current object 'user'.
 };
 
 // user.greeting();
@@ -45,5 +45,5 @@ user.greetingTwo = function(){
 // console.log();         // output -> [Function (anonymous)]
 
 
-
+// console.log(user);
 
