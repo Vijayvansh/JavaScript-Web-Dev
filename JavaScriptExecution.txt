@@ -1,0 +1,266 @@
+// JavaScript Execution Context
+
+JS -> Single threded 
+
+* JavaScript runs in two phases-
+
+{ code } -> Globle Execution Context -> refer into "this"
+if JS runs then always have a Globle Execution Context in every rentime emviroment.
+every runtime enviroment have different Globle Execution Context. (In Browser => this -> window object)
+
+
+// Execution Context
+ 1. Globle Execution Context
+ 2. Function / Functional Execution Context
+ 3. Eval Execution Context (property of Globle Object)
+
+ // JS execute in 2 phases ->
+ 1. Memory Creation Phase / creation phases -> [ only allocate memory to variables or instances, not executed at Memory creation phase]
+ 2. Execution Phase -> [execute all the processes]
+
+ 
+ +++++++++++++++++++++++******** JS Execution process (behind the scene) ***********+++++++++++++++++++++++++++++++++++++
+
+ Program ->
+
+ let val1 = 10;
+ let val2 = 5;
+ Function addNum(num1, num2) {
+    let total = num1 + num2;
+    return total;
+ }
+let result1 = addNum(val1, val2);
+let result2 = addNum(10, 2);
+
+* Execution cycle / Steps  ->
+--------------------------
+
+step-1 -> Globle Execution / Globle enviroment [allocated to 'this'].
+
+step-2 -> Memory Creation phase =>
+
+    L-26:    val1 -> undefined
+    L-27:    val2 -> undefined
+    L-28:    addNum -> defination of Function -> now skip complete defination of function [from L-29 to L-31]
+    L-32:    result1 -> undefined
+    L-33:    result2 -> undefined
+
+step-3 -> Execution Phase => [Execution cycle] =>
+
+    L-26:    val1 <- 10
+    L-27:    val2 <- 5
+    L-32:    result1 <- addNum
+
+        // if any function execute then a new Execution Context create for that function -> [here new Execution Context created for addNum()] ->
+            [created new variables enviroment + Execution thred]
+
+        step-3.1 -> Memory Creation Phase =>
+
+            L-32:    val1 -> undefined
+            L-32:    val2 -> undefined
+            L-29:    total -> undefined
+
+        step-3.2 -> Execution Phase =>
+
+            L-28:    num1 <- val1 <- 10
+            L-28:    num2 <- val2 <- 5
+            L-29:    total = 15
+            L-30:    return total to parent Execution Context of current Execution Context.
+
+        [Note -> JS automatically delete the new Execution Context of function, when that function completely executed for memory saving purpose].
+
+
+    L-32:    result1 <- total <- 15
+    L-33:    result2 <- addNum
+
+        // again a function is called so repeat process L-54 to L-70 ->
+    
+    L-33:    result2 <- total <- 12
+
+// This is how behind the scene JS process complete program.
+
+
++++++++++++++++++++++***********************  Call Stack  ***********************++++++++++++++++++++++++++++++++++++
+
+* Call Stack is the stack use for load function to execution
+Call  Stack work on LIFO [Last In First Out] Principle.
+
+for example -> 
+------------
+
+function one(){
+    console.log("one");
+}
+
+function two(){
+    console.log("two");
+}
+
+function three(){
+    console.log("three");
+}
+
+one();
+two();
+three();
+
+Call Stack ->   |            |
+                |            |
+                |            |
+                |            |
+                |            |
+                |            |
+                |------------|
+                |Globle exec.|
+                 ------------
+
+                |            |
+                |            |
+                |            |
+                |            |
+                |            |
+                |   one()    |      // one() push 
+                |------------|
+                |Globle exec.|
+                 ------------
+
+                |            |
+                |            |
+                |            |
+                |            |
+                |            |
+                |            |      // one() pop
+                |------------|
+                |Globle exec.|
+                 ------------
+
+                |            |
+                |            |
+                |            |
+                |            |
+                |            |
+                |   two()    |      // two() push
+                |------------|
+                |Globle exec.|
+                 ------------
+
+                |            |
+                |            |
+                |            |
+                |            |
+                |            |
+                |            |      // two() pop
+                |------------|
+                |Globle exec.|
+                 ------------
+
+                |            |
+                |            |
+                |            |
+                |            |
+                |            |
+                |  three()   |      // three() push
+                |------------|
+                |Globle exec.|
+                 ------------
+
+                |            |
+                |            |
+                |            |
+                |            |
+                |            |
+                |            |      // three() pop
+                |------------|
+                |Globle exec.|
+                 ------------
+
+
+// Another example -> 
+   ----------------
+
+function one(){
+    console.log("one");
+    two();
+}
+
+function two(){
+    console.log("two");
+    three();
+}
+
+function three(){
+    console.log("three");
+}
+
+one();
+
+Call Stack ->   |            |
+                |            |
+                |            |
+                |            |
+                |            |
+                |            |
+                |------------|
+                |Globle exec.|
+                 ------------
+
+                |            |
+                |            |
+                |            |
+                |            |
+                |            |
+                |   one()    |      // one() push 
+                |------------|
+                |Globle exec.|
+                 ------------
+
+                |            |
+                |            |
+                |            |
+                |   two()    |
+                |------------|
+                |   one()    |      // two() push
+                |------------|
+                |Globle exec.|
+                 ------------
+
+                |            |
+                |  three()   |
+                |------------|
+                |   two()    |
+                |------------|
+                |   one()    |      // three() push
+                |------------|
+                |Globle exec.|
+                 ------------
+
+                |            |
+                |            |
+                |            |
+                |   two()    |
+                |------------|
+                |   one()    |      // three() pop
+                |------------|
+                |Globle exec.|
+                 ------------
+
+                |            |
+                |            |
+                |            |
+                |            |
+                |            |
+                |   one()    |      // two() pop
+                |------------|
+                |Globle exec.|
+                 ------------
+
+                |            |
+                |            |
+                |            |
+                |            |
+                |            |
+                |            |      // one() pop
+                |------------|
+                |Globle exec.|
+                 ------------
+
