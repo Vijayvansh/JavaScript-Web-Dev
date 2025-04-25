@@ -21,6 +21,7 @@ function immediatly invoked
 
 
 // IIFE with parameter -> 
+const name = "vijay";
 ( (name) => {           
     console.log(`say hello to ${name}`);    
-} )("vijay");
+} )(name);
