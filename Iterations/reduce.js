@@ -27,4 +27,4 @@ const totalPrice = shoppingCart.reduce((acc, course) => {
 
 console.log(totalPrice);
 
-
+// cl(totalPrice)
