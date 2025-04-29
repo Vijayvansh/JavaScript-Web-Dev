@@ -43,3 +43,34 @@ let myObject = {
 //     console.log(myObjectKey, " :- ", myObjectKeyValue);             
 // }
 
+
+// ForIn loop in JS ->
+
+const languages = {
+    js: "JavaScript",
+    cpp: "C++",
+    rb: "Rubi",
+    java: "Java",
+    c: "C"
+}
+
+for (const key in languages) {
+//    console.log(key);                                                 // for object keys
+//    console.log(languages[key]);                                       // for object key-values
+//    console.log(`${key}, is extension of ${languages[key]} file`);    
+}
+
+const newArray = ["Ford", "Tesla", "Tata", "Mahindra", "Skodaa"];
+for (const newArrayElement in newArray) {
+    // console.log(newArray[newArrayElement]);
+}
+
+const newMap = new Map();
+newMap.set('js', "JavaScript");
+newMap.set('cpp', "C++");
+newMap.set('rb', "Ruby");
+
+// for (const newMaokey in newMap) {           // maps are not iteratable using forin loop
+    // console.log(newMaokey);
+// }
+
