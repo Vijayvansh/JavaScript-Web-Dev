@@ -1,7 +1,7 @@
 // Reduce menthod in JS -> Arrays
 
-// myArray.reduce( (accumletor, arrayElement) => {
-//     return accumletor + arrayElement;
+// myArray.reduce( (accumulator, currentValue) => {
+//     return accumulator + currentValue;
 // }, accumletor_initial_value );
 
 myArray = [1, 2, 3, 4, 5];
