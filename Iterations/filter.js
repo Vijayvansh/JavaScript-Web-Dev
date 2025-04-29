@@ -40,3 +40,8 @@ let userBooks = books.filter( (book) => book.genre === "History" );
 userBooks = books.filter( (book) => book.publish >= 2000 );
 // console.log(userBooks);
 
+let anArray = [11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+
+let newArray = anArray.map( (anArrayElement) => anArrayElement * 2);
+
+console.log(newArray);
