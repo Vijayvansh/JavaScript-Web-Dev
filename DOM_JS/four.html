@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Element Edit or Changes by DOM</title>
+</head>
+<body style="background-color: #212121; color: #fff;">
+    <ul class="list">
+        <li>JavaScript</li>
+        <li>Java</li>
+        <li>C++</li>
+    </ul>
+</body>
+
+<script>
+    // Edit or Change Existing Element ->
+    const list = document.querySelector('li:nth-child(2)');
+    
+    // option-1 ->  
+    // list.innerHTML = "Mojo";     
+
+    // option-2 ->
+    const newListItem = document.createElement("li");
+    newListItem.textContent = "Mojo";
+    // list.replaceWith(newListItem);
+    
+    // Edit complete outer html ->
+    const firstLanguage = document.querySelector("li:first-child");
+    firstLanguage.outerHTML = "<li>TypeScript</li>"
+    
+</script>
+
+</html>
