@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM using JS</title>
+</head>
+<body class="its-body">
+
+    <ul class="list">
+        <li>JavaScript</li>
+    </ul>
+</body>
+
+<script>
+   
+    // creating function for element creation ->
+    function addListItem(language) {
+        const listItem = document.createElement('li');
+        listItem.innerText = `${language}`;
+        document.querySelector(".list").appendChild(listItem);
+    }
+
+    // optimize function -> 
+    function addListItemOptimized(language) {
+        const listItem = document.createElement('li');
+        listItem.appendChild(document.createTextNode(language));
+        document.querySelector(".list").appendChild(listItem);
+    }
+
+    addListItemOptimized("Java");
+
+    // addListItem("Java");
+    // addListItem("Python");
+    // addListItem("C++");
+
+    // function addDiv(myName) {
+    //     const div = document.createElement('div');
+    //     div.innerText = `${myName}`
+    //     document.body.appendChild(div);
+    // }
+
+    // addDiv("Vijay Vansh Saini");
+
+</script>
+
+</html>
